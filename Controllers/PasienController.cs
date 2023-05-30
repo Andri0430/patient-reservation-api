@@ -11,10 +11,12 @@ namespace HospitalAPI.Controllers
     {
         private readonly IPasien _Ipasien;
         private readonly IPerawatan _Iperawatan;
-        public PasienController(IPasien pasien, IPerawatan perawatan)
+        private readonly IKamar _Ikamar;
+        public PasienController(IPasien pasien, IPerawatan perawatan, IKamar kamar)
         {
             _Ipasien = pasien;
             _Iperawatan = perawatan;
+            _Ikamar = kamar;
         }
 
         [HttpGet("")]
@@ -24,7 +26,7 @@ namespace HospitalAPI.Controllers
             return Ok(pasiens);
         }
 
-        [HttpPost("/Create")]
+        [HttpPost("Create")]
         public IActionResult CreatePasien([FromForm] PasienDto pasien)
         {
             var pasienExist = _Ipasien.GetAllPasiens().Where(p => p.NoKtp == pasien.NoKtp || p.NoHp == pasien.NoHp).FirstOrDefault();

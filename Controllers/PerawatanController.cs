@@ -26,7 +26,6 @@ namespace HospitalAPI.Controllers
         public IActionResult GetPerawatanById(int id)
         {
             var perawatan = _IPerawatan.GetPerawatanById(id);
-
             if(perawatan == null)
             {
                 ModelState.AddModelError("", "Data Tersebut Tidak Ditenukan");

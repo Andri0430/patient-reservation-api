@@ -1,6 +1,7 @@
 ﻿using HospitalAPI.Data;
 using HospitalAPI.Interface;
 using HospitalAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HospitalAPI.Repository
 {
@@ -13,27 +14,30 @@ namespace HospitalAPI.Repository
         } 
         public void Create(Kamar kamar)
         {
-            throw new NotImplementedException();
+            _hospitalContext.Kamar.Add(kamar);
+            _hospitalContext.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            _hospitalContext.Kamar.Remove(GetKamarById(id));
+            _hospitalContext.SaveChanges();
         }
 
         public ICollection<Kamar> GetAllKamar()
         {
-            throw new NotImplementedException();
+            return _hospitalContext.Kamar.Include(k => k.Perawatan).ToList();
         }
 
         public Kamar GetKamarById(int id)
         {
-            throw new NotImplementedException();
+            return _hospitalContext.Kamar.Include(k => k.Perawatan).Where(k => k.Id == id).FirstOrDefault();
         }
 
         public void Update(Kamar kamar)
         {
-            throw new NotImplementedException();
+            _hospitalContext.Kamar.Update(kamar);
+            _hospitalContext.SaveChanges();
         }
     }
 }

@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IPasien, PasienRepo>();
 builder.Services.AddScoped<IPerawatan, PerawatanRepo>();
+builder.Services.AddScoped<IKamar, KamarRepo>();
 
 builder.Services.AddDbContext<HospitalContext>(options =>
 {
