@@ -11,6 +11,5 @@ namespace HospitalAPI.Models
         public string Nama { get; set; }
         public int Kuota { get; set; }
         public Perawatan Perawatan { get; set; }
-        public ICollection<Pasien> Pasiens { get; set; }
     }
 }

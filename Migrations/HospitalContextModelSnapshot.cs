@@ -107,13 +107,13 @@ namespace HospitalAPI.Migrations
             modelBuilder.Entity("HospitalAPI.Models.Pasien", b =>
                 {
                     b.HasOne("HospitalAPI.Models.Kamar", "Kamar")
-                        .WithMany("Pasiens")
+                        .WithMany()
                         .HasForeignKey("KamarId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("HospitalAPI.Models.Perawatan", "Perawatan")
-                        .WithMany("Pasiens")
+                        .WithMany()
                         .HasForeignKey("PerawatanId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -121,16 +121,6 @@ namespace HospitalAPI.Migrations
                     b.Navigation("Kamar");
 
                     b.Navigation("Perawatan");
-                });
-
-            modelBuilder.Entity("HospitalAPI.Models.Kamar", b =>
-                {
-                    b.Navigation("Pasiens");
-                });
-
-            modelBuilder.Entity("HospitalAPI.Models.Perawatan", b =>
-                {
-                    b.Navigation("Pasiens");
                 });
 #pragma warning restore 612, 618
         }

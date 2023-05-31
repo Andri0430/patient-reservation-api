@@ -27,12 +27,12 @@ namespace HospitalAPI.Repository
 
         public ICollection<Pasien> GetAllPasiens()
         {
-            return _hospitalContext.Pasien.Include(p => p.Perawatan).ToList();
+            return _hospitalContext.Pasien.ToList();
         }
 
         public Pasien GetPasienById(int id)
         {
-            return _hospitalContext.Pasien.Include(p => p.Perawatan).Where(p => p.Id == id).FirstOrDefault();
+            return _hospitalContext.Pasien.Include(p => p.Perawatan).Include(p => p.Kamar).Where(p => p.Id == id).FirstOrDefault();
         }
 
         public void Update(Pasien pasien)

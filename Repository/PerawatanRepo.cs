@@ -1,6 +1,7 @@
 ﻿using HospitalAPI.Data;
 using HospitalAPI.Interface;
 using HospitalAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace HospitalAPI.Repository
 {
